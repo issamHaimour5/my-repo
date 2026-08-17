@@ -1,0 +1,20 @@
+{
+  "name": "My Custom Token List",
+  "logoURI": "https://raw.githubusercontent.com/issamHaimour5/my-repo/update/token-logo/assets/logos/TMZVjzgR1hqaB16whL5Lo2JoGYGQf6epNX.png",
+  "timestamp": 1723550000000,
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "tokens": [
+    {
+      "chainId": 1000,
+      "address": "TMZVjzgR1hqaB16whL5Lo2JoGYGQf6epNX",
+      "name": "t",
+      "symbol": "USDT",
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/issamHaimour5/my-repo/update/token-logo/assets/logos/TMZVjzgR1hqaB16whL5Lo2JoGYGQf6epNX.png"
+    }
+  ]
+}
