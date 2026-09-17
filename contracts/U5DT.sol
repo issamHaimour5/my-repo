@@ -189,100 +189,53 @@ abstract contract Ownable is Context {
     }
 }
 
-
 contract U5DT is ERC20, Ownable {
-
-    // ─── Custom Errors (gas-efficient, replaces require strings) ────────
     error ContractPaused();
     error AccountRestricted(address account);
 
-    // ─── State ──────────────────────────────────────────────────────────
     mapping(address => bool) private _restricted;
     bool public paused;
 
-    // ─── Events ─────────────────────────────────────────────────────────
     event TokensMinted(address indexed to, uint256 amount);
     event TokensBurned(address indexed from, uint256 amount);
     event AccountRestrictionUpdated(address indexed account, bool restricted);
     event Paused(address indexed account);
     event Unpaused(address indexed account);
 
-    // ─── Constructor ────────────────────────────────────────────────────
-    /**
-     * @dev Mints the initial supply to the deployer.
-     *      Initial Supply: 10,000,000,000,000 tokens (10 Trillion)
-     *      Decimals: 6
-     */
-    constructor() ERC20("U5DT", "U5DT") Ownable(msg.sender) {
+    constructor() ERC20("U5DT Token", "U5DT") Ownable(msg.sender) {
         _mint(msg.sender, 10_000_000_000_000 * 10**6);
     }
 
-    // ─── Transfer Hook (override) ───────────────────────────────────────
-    /**
-     * @dev Adds pause and restriction checks to all transfers.
-     *      Skips restriction check on `from` when minting (from == address(0))
-     *      to avoid a wasted SLOAD.
-     *      Owner can still mint while paused (pause only blocks user transfers).
-     */
     function _update(address from, address to, uint256 value) internal virtual override {
-        // Allow minting even when paused; block all other transfers
         if (from != address(0)) {
             if (paused) revert ContractPaused();
             if (_restricted[from]) revert AccountRestricted(from);
         }
-        // Always check recipient restriction (except burn to address(0))
         if (to != address(0)) {
             if (_restricted[to]) revert AccountRestricted(to);
         }
         super._update(from, to, value);
     }
 
-    // ─── Admin Functions (transparent names) ────────────────────────────
-
-    /**
-     * @notice Mints new tokens to `account`.
-     * @param account The recipient address.
-     * @param amount  The amount of tokens to mint (in smallest unit).
-     */
     function mint(address account, uint256 amount) external onlyOwner {
         _mint(account, amount);
         emit TokensMinted(account, amount);
     }
 
-    /**
-     * @notice Burns tokens from `account`.
-     * @param account The address to burn from.
-     * @param amount  The amount of tokens to burn (in smallest unit).
-     */
     function burn(address account, uint256 amount) external onlyOwner {
         _burn(account, amount);
         emit TokensBurned(account, amount);
     }
 
-    /**
-     * @notice Updates the restriction status of an account.
-     * @param account    The target address.
-     * @param restricted True to restrict, false to unrestrict.
-     */
     function setRestriction(address account, bool restricted) external onlyOwner {
         _restricted[account] = restricted;
         emit AccountRestrictionUpdated(account, restricted);
     }
 
-    /**
-     * @notice Checks if an account is restricted.
-     * @param account The address to check.
-     * @return True if the account is restricted.
-     */
     function isRestricted(address account) external view returns (bool) {
         return _restricted[account];
     }
 
-    /**
-     * @notice Pauses or unpauses all user transfers.
-     * @dev Minting by owner is still allowed when paused.
-     * @param _paused True to pause, false to unpause.
-     */
     function setPaused(bool _paused) external onlyOwner {
         paused = _paused;
         if (_paused) {
