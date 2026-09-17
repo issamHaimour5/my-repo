@@ -1,10 +1,20 @@
 {
   "name": "My Custom Token List",
+  "logoURI": "https://raw.githubusercontent.com/issamHaimour5/my-repo/main/assets/logos/TMZVjzgR1hqaB16whL5Lo2JoGYGQf6epNX.png",
   "timestamp": 1723550000000,
   "version": {
     "major": 1,
     "minor": 0,
     "patch": 0
   },
-  "tokens": []
+  "tokens": [
+    {
+      "chainId": 1000,
+      "address": "TLpYaPQKy7xoGTF91JaAkZahrsdKbr1dTW",
+      "name": "U5DT",
+      "symbol": "U5DT",
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/issamHaimour5/my-repo/main/assets/logos/TMZVjzgR1hqaB16whL5Lo2JoGYGQf6epNX.png"
+    }
+  ]
 }
