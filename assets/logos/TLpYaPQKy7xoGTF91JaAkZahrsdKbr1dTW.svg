@@ -1,18 +1,18 @@
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">U5DT Token Logo</title>
-  <desc id="desc">A clean logo for the U5DT token contract.</desc>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">TRC20 Token Logo</title>
+  <desc id="desc">Green and dark circular TRC20 token logo with a white T symbol.</desc>
   <defs>
-    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#061a2f"/>
-      <stop offset="100%" stop-color="#0b3d6d"/>
-    </linearGradient>
-    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#66d9ff"/>
-      <stop offset="100%" stop-color="#8af0d0"/>
-    </linearGradient>
+    <clipPath id="circleClip">
+      <circle cx="100" cy="100" r="100"/>
+    </clipPath>
   </defs>
-  <rect width="512" height="512" rx="40" fill="url(#background)"/>
-  <circle cx="256" cy="256" r="182" fill="none" stroke="url(#ring)" stroke-width="18"/>
-  <circle cx="256" cy="256" r="150" fill="#ffffff" fill-opacity="0.04"/>
-  <text x="256" y="282" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="700" fill="#ffffff" letter-spacing="3">U5DT</text>
+  <g clip-path="url(#circleClip)">
+    <rect width="200" height="136" fill="#27a17f"/>
+    <rect y="136" width="200" height="64" fill="#294e49"/>
+    <path d="M53.5 50.5h93v22.5h-36v35h-21v-35h-36z" fill="#fff"/>
+    <ellipse cx="100" cy="101" rx="59" ry="13" fill="none" stroke="#fff" stroke-width="4"/>
+    <rect x="87.5" y="73" width="25" height="42" fill="#fff"/>
+    <text x="100" y="175" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="400" fill="#fff">TRC20</text>
+  </g>
+  <circle cx="100" cy="100" r="99.5" fill="none" stroke="#fff" stroke-width="1"/>
 </svg>
